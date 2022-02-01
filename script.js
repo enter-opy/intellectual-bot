@@ -4,6 +4,7 @@ function send() {
 
     const value = textbox.value;
     textbox.value = ""
+    textbox.focus();
 
     const date = new Date();
 
