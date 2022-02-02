@@ -39,9 +39,24 @@ function send() {
         indicator.appendChild(dot3);
 
         setTimeout(function () {
+
+            let response = "hi";
+
+            var xhttp = new XMLHttpRequest();
+            var url = `https://api.dictionaryapi.dev/api/v2/entries/en/${value.replace(' ', '%20')}`;
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    response = this.responseText;
+                }
+            };
+            xhttp.open("GET", url, true);
+            xhttp.withCredentials = false;
+            xhttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
+            xhttp.send();
+
             let bottext = document.createElement("li");
             bottext.className = "bottext";
-            bottext.innerHTML = value;
+            bottext.innerHTML = response;
             messages.appendChild(bottext);
         
             let timebot = document.createElement("li");
