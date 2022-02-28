@@ -39,31 +39,38 @@ function send() {
         indicator.appendChild(dot3);
 
         setTimeout(function () {
+            const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${value.replace(' ', '%20')}`;
+            let result = ""
 
-            let response = "hi";
+            fetch(url)
+            .then(response => response.json())
+            .then(function(data) {
+                console.log(data[0].meanings[0].definitions[0].definition);
+                result = data[0].meanings[0].definitions[0].definition;
 
-            var xhttp = new XMLHttpRequest();
-            var url = `https://api.dictionaryapi.dev/api/v2/entries/en/${value.replace(' ', '%20')}`;
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    response = this.responseText;
-                }
-            };
-            xhttp.open("GET", url, true);
-            xhttp.withCredentials = false;
-            xhttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
-            xhttp.send();
-
-            let bottext = document.createElement("li");
-            bottext.className = "bottext";
-            bottext.innerHTML = response;
-            messages.appendChild(bottext);
-        
-            let timebot = document.createElement("li");
-            timebot.className = "timebot"
-            timebot.innerHTML = `${date.getHours()}:${date.getMinutes()}`;
-            bottext.appendChild(timebot);
-            messages.removeChild(indicator);
+                let bottext = document.createElement("li");
+                bottext.className = "bottext";
+                bottext.innerHTML = result;
+                messages.appendChild(bottext);
+            
+                let timebot = document.createElement("li");
+                timebot.className = "timebot"
+                timebot.innerHTML = `${date.getHours()}:${date.getMinutes()}`;
+                bottext.appendChild(timebot);
+                messages.removeChild(indicator);
+            })
+            .catch(function(err) {
+                let bottext = document.createElement("li");
+                bottext.className = "bottext";
+                bottext.innerHTML = "What in the observable universe is that?";
+                messages.appendChild(bottext);
+            
+                let timebot = document.createElement("li");
+                timebot.className = "timebot"
+                timebot.innerHTML = `${date.getHours()}:${date.getMinutes()}`;
+                bottext.appendChild(timebot);
+                messages.removeChild(indicator);
+            })         
         }, 500);
         
         
