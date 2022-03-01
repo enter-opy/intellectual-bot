@@ -19,8 +19,6 @@ function send() {
         timeuser.className = "timeuser"
         timeuser.innerHTML = `${date.getHours()}:${date.getMinutes()}`;
         usertext.appendChild(timeuser);
-
-        //
         
         let indicator = document.createElement("li");
         indicator.className = "indicator";

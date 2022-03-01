@@ -1,9 +1,14 @@
+body {
+    background-image: url("res/background.png");
+    overflow: hidden;
+}
+
 .messages {
     background-color: #111D5E;
     border: none;
     box-shadow: 5px 5px 15px #00000063;
-    height: 562px;
-    width: 90%;
+    height: 75vh;
+    width:  inherit;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 30px;
@@ -75,8 +80,8 @@
     color: white;
     border: none;
     box-shadow: 5px 5px 15px #00000063;
-    width: 27%;
-    height: 25px;
+    width: 40%;
+    height: 30px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
@@ -92,7 +97,7 @@
     color: #111D5E;
     border: none;
     background-color: #C70039;
-    width: 90%;
+    width: inherit;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 30px;
@@ -108,14 +113,13 @@
     border: none;
     border-radius: 25px;
     float: left;
-    box-shadow: 5px 5px 15px #00000023;
     margin-top: 6px;
     margin-left: 6px;
 }
 
 .button {
-    height: 45px;
-    width: 45px;
+    height: 50px;
+    width: 50px;
     position: relative;
     top: 3px;
     background-color: #111D5E;
